@@ -1,21 +1,21 @@
 import React from "react";
-import Checkbox from "@mui/material/Checkbox";
+import Checkbox, { CheckboxProps } from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
-interface CheckboxLabelProps {
+interface CheckboxLabelProps extends Pick<CheckboxProps, "inputProps"> {
     id: string;
     name: string;
     checked: boolean;
     handleChange: ((event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => void);
 };
 
-const CheckboxLabel: React.FC<CheckboxLabelProps> = ({ id, name, checked, handleChange }) => (
+const CheckboxLabel: React.FC<CheckboxLabelProps> = ({ id, name, checked, handleChange, inputProps }) => (
     <FormControlLabel control={
         <Checkbox
             id={id}
             checked={checked}
             onChange={handleChange}
-            inputProps={{ 'aria-label': 'controlled' }}
+            inputProps={inputProps}
         />
     } label={name} />
 );

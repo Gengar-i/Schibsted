@@ -1,0 +1,33 @@
+#sorting {
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    & > .MuiFormControl-root {
+        padding-right: 20px;
+        min-width: 200px;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 1100px) {
+    #sorting {
+        margin-right: 40px;
+        position: absolute;
+        width: auto;
+        right: 0;
+        & > .MuiFormControl-root {
+            padding-right: 0;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    #sorting  {
+        position: relative;
+        margin-right: auto;
+        justify-content: flex-start;
+    }
+}

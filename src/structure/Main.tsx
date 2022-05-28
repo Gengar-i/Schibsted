@@ -52,7 +52,6 @@ const Main: React.FC = () => {
     const loadCardsHandler = (name: string, arr: Array<SourceProps>) => {
         loadCards(name).then((fetchedData) => {
             if (fetchedData) {
-                console.log(fetchedData);
                 if (fetchedData.length) {
                     setData([...data, ...fetchedData]);
                     setSources(arr);
@@ -87,8 +86,19 @@ const Main: React.FC = () => {
             name: source,
             checked: index === 0
         }));
-        arr.forEach((source) => source.checked ? loadCardsHandler(source.name, arr) : null);
-    }, []); // eslint-disable-line
+        arr.forEach((source) => {
+            if (source.checked) {
+                loadCards(source.name).then((fetchedData) => {
+                    if (fetchedData) {
+                        if (fetchedData.length) {
+                            setData(fetchedData);
+                            setSources(arr);
+                        }
+                    } else setOpenAlert(true);
+                });
+            }
+        });
+    }, []);
     return (
         <main>
             <MuiSnackbar
@@ -97,20 +107,22 @@ const Main: React.FC = () => {
                 onClose={handleCloseAlert} 
                 label={"There was an error with request. Try again in a few minutes."}
             />
-            <DataSources sources={sources} handleChange={handleChange} />
             <Sorting value={sortDateValue} onChange={handleSort} />
-            <div id="card-container">
-                {data.map(({ id, date, image, category, title, preamble }) => (
-                    <Card
-                        key={`${id}`}
-                        id={id}
-                        date={date}
-                        image={image}
-                        category={category}
-                        title={title}
-                        preamble={preamble}
-                    />
-                ))}
+            <div id="main-container">
+                <DataSources sources={sources} handleChange={handleChange} />
+                <div id="card-container">
+                    {data.map(({ id, date, image, category, title, preamble }) => (
+                        <Card
+                            key={`${id}`}
+                            id={id}
+                            date={date}
+                            image={image}
+                            category={category}
+                            title={title}
+                            preamble={preamble}
+                        />
+                    ))}
+                </div>
             </div>
         </main>
     );

@@ -1,13 +1,19 @@
 # Schibsted Task
 
+## What have been done
+
+1. User can sort articles by data
+2. User can fetch articles by sports, fashion or both
+3. Page should support all devices
+4. Added header, main and fancy footer since all pages should have it
+
 ## Improvements
 
-1. I had to convert format manualy since moment do not understand some of Norway months...
-2. There could be added to localstorage info about data sources we left page with so its not rendering always sports when we F5
-3. WCAG 2.0 Level AA requirements
+1. I had to convert date format manualy since moment lib do not understand some of Norway months...
+2. There could be added data sources and sorting to localstorage so when we left page its will remember our checkboxes and sorting type
+3. WCAG 2.0 Level AA requirements would be nice
 4. Loading for bigger data
-5. Some good desing for page :D
-
+5. Better desing for page since I am not designer :(
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

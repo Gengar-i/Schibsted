@@ -1,6 +1,21 @@
-#data-source {
-
+#data-sources {
+    min-width: 150px;
+    margin-top: 20px;
+    &-title {
+        margin-bottom: 10px;
+    }
+    .MuiFormControlLabel-label {
+        text-transform: capitalize;
+    }
+    .MuiFormControlLabel-root {
+        min-width: 0;
+        max-width: 0;
+    }
 }
-.MuiFormControlLabel-label {
-    text-transform: capitalize;
+
+@media (max-width: 1100px) {
+    #data-sources {
+        margin: 0;
+        max-width: 150px;
+    }
 }

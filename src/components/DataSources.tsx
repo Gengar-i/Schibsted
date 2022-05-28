@@ -11,7 +11,7 @@ interface DataSourceProps {
  
 const DataSources: React.FC<DataSourceProps> = ({ sources, handleChange }) => (
     <div id="data-sources">
-        <p id="data-source">Data Sources</p>
+        <p id="data-sources-title">Data Sources</p>
         <FormGroup>
             {sources.map(({ id, name, checked}) => (
                 <CheckboxLabel
@@ -20,6 +20,11 @@ const DataSources: React.FC<DataSourceProps> = ({ sources, handleChange }) => (
                     key={`${id}-source`}
                     name={name}
                     handleChange={handleChange}
+                    inputProps={{
+                        // @ts-ignore
+                        "data-testid": `data-source-${id}`,
+                        "aria-label": `controlled-${id}`
+                    }}
                 />
             ))}
         </FormGroup>
